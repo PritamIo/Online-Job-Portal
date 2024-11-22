@@ -4,7 +4,8 @@ import SearchBar from "./components/SearchBar"
 import JobCard from "./components/JobCard"
 import { useEffect, useState } from "react"
 import { collection, query, orderBy, where, getDocs } from "firebase/firestore";
-import {db} from "./firebase.config"
+import { db } from "../firebase.config"
+
 
 function App() {
   const [jobs, setJobs] = useState([]);
@@ -77,12 +78,7 @@ function App() {
     <div>
       <Navbar />
       <Header />
-      <SearchBar fetchJobsCustom={fetchJobsCustom}/>
-      {customSearch && 
-        <button onClick={fetchJobs} className="flex pl-[1250px] mb-2">
-          <p className="bg-blue-500 px-10 py-2 rounded-md text-white">Clear Filters</p>
-        </button>
-      }
+      <SearchBar fetchJobs={fetchJobs} fetchJobsCustom={fetchJobsCustom} customSearch={customSearch} />
       {jobs.map((job)=> (
         <JobCard key={job.id} {...job}/>
       ))}
