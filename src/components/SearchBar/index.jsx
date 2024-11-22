@@ -22,6 +22,10 @@ function SearchBar(props) {
 
   const search = async () => {
     console.log("Searching with criteria: ", jobCriteria); // Log the criteria
+    if (!jobCriteria.title && !jobCriteria.location && !jobCriteria.experience && !jobCriteria.type) {
+      // If all fields are empty, fetch nothing
+      return;
+    }
     try {
       await props.fetchJobsCustom(jobCriteria);
     } catch (error) {
