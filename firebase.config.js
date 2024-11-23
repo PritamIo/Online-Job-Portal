@@ -5,11 +5,11 @@ import { getFirestore } from "firebase/firestore";
 // Your web app's Firebase configuration
 const firebaseConfig = {
   apiKey: import.meta.env.VITE_FIREBASE_API_KEY,
-  authDomain: import.meta.env.VITE_FIREBASE_AUTH_DOMAIN,
-  projectId: import.meta.env.VITE_FIREBASE_PROJECT_ID,
-  storageBucket: import.meta.env.VITE_FIREBASE_STORAGE_BUCKET,
-  messagingSenderId: import.meta.env.VITE_FIREBASE_MESSAGING_SENDER_ID,
-  appId: import.meta.env.VITE_FIREBASE_APP_ID,
+  authDomain: "online-job-board-41698.firebaseapp.com",
+  projectId: "online-job-board-41698",
+  storageBucket: "online-job-board-41698.firebasestorage.app",
+  messagingSenderId: "293935248477",
+  appId: "1:293935248477:web:807536393996a0816ec9b4",
 };
 
 // Initialize Firebase
