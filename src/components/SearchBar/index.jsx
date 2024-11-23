@@ -21,8 +21,13 @@ function SearchBar(props) {
   // }
 
   const search = async () => {
-    console.log("Searching with criteria: ", jobCriteria); // Log the criteria
-    if (!jobCriteria.title && !jobCriteria.location && !jobCriteria.experience && !jobCriteria.type) {
+    // console.log("Searching with criteria: ", jobCriteria); // Log the criteria
+    if (
+      !jobCriteria.title &&
+      !jobCriteria.location &&
+      !jobCriteria.experience &&
+      !jobCriteria.type
+    ) {
       // If all fields are empty, fetch nothing
       return;
     }
@@ -30,6 +35,20 @@ function SearchBar(props) {
       await props.fetchJobsCustom(jobCriteria);
     } catch (error) {
       console.error("Error fetching jobs: ", error);
+    }
+  };
+
+  const clearFilters = () => {
+    setJobCriteria({
+      title: "",
+      location: "",
+      experience: "",
+      type: "",
+    });
+
+    // Call props.fetchJobs to reset jobs if needed
+    if (props.fetchJobs) {
+      props.fetchJobs();
     }
   };
 
@@ -41,7 +60,7 @@ function SearchBar(props) {
         value={jobCriteria.title}
         className="w-64 py-3 pl-4 bg-zinc-200 font-semibold rounded-md"
       >
-        <option value="" disabled hidden>
+        <option value="" className="text-gray-500">
           Job Role
         </option>
         <option value="iOS Developer">iOS Developer</option>
@@ -56,7 +75,7 @@ function SearchBar(props) {
         value={jobCriteria.type}
         className="w-64 py-3 pl-4 bg-zinc-200 font-semibold rounded-md"
       >
-        <option value="" disabled hidden>
+        <option value="" className="text-gray-500">
           Job Type
         </option>
         <option value="Full Time">Full Time</option>
@@ -69,7 +88,7 @@ function SearchBar(props) {
         value={jobCriteria.location}
         className="w-64 py-3 pl-4 bg-zinc-200 font-semibold rounded-md"
       >
-        <option value="" disabled hidden>
+        <option value="" className="text-gray-500">
           Location
         </option>
         <option value="Remote">Remote</option>
@@ -82,7 +101,7 @@ function SearchBar(props) {
         value={jobCriteria.experience}
         className="w-64 py-3 pl-4 bg-zinc-200 font-semibold rounded-md"
       >
-        <option value="" disabled hidden>
+        <option value="" className="text-gray-500">
           Experience
         </option>
         <option value="Fresher">Fresher</option>
@@ -98,7 +117,7 @@ function SearchBar(props) {
       </button>
       {props.customSearch && (
         <button
-          onClick={props.fetchJobs}
+          onClick={clearFilters}
           className="w-64 bg-red-500 text-white font-bold py-3 rounded-md"
         >
           Clear Filters
