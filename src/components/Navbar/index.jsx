@@ -1,7 +1,7 @@
 function Navbar() {
   return (
     <div className="h-20 flex justify-between items-center w-full text-white px-8 md:px-40">
-      <div className="text-3xl font-bold">JobPortal</div>
+      <a href="/" className="text-3xl font-bold">Job Insight</a>
       <a
         href="https://fastcv.vercel.app/"
         target="_blank"
